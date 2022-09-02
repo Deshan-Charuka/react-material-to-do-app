@@ -7,7 +7,7 @@ const defaultValues = {
   taskDescription: "",
 };
 
-const InputForm = () => {
+const InputForm = (props) => {
   const [formValues, setFormValues] = useState(defaultValues);
 
   const handleInputChange = (e) => {
@@ -20,7 +20,20 @@ const InputForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formValues);
+    if (
+      formValues.taskDescription !== null ||
+      formValues.taskDescription !== ""
+    ) {
+      props.setTasks([
+        ...props.tasks,
+        {
+          id: props.tasks.length + 1,
+          description: formValues.taskDescription,
+          isComplete: 2,
+        },
+      ]);
+    }
+    setFormValues(defaultValues);
   };
 
   return (

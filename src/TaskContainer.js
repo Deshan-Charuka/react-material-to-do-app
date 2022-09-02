@@ -16,7 +16,6 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const TaskContainer = (props) => {
-  const handleChange = (event) => {};
 
   return (
     <Box sx={{ width: "25%" }}>
@@ -27,7 +26,6 @@ const TaskContainer = (props) => {
               <Checkbox
                 checked={d.isComplete === 1 ? true : false}
                 onChange={(e) => {
-                  console.log(e.target.checked);
                   d.isComplete = e.target.checked === true ? 1 : 2;
                   props.setTasks([...props.tasks]);
                 }}
