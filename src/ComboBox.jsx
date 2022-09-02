@@ -5,8 +5,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 
 const statusOptions = [
   { label: "Completed", id: 1 },
-  { label: "Pending", id: 2 },
-  { label: "Not Started", id: 3 }
+  { label: "Pending", id: 2 }
 ];
 
 const ComboBox = () => {

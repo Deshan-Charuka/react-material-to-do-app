@@ -41,9 +41,10 @@ const InputForm = () => {
         type="text"
         value={formValues.taskDescription}
         onChange={handleInputChange}
+        size="small"
       />
-      <Button variant="contained" color="primary" type="submit">
-        Submit
+      <Button variant="contained" color="primary" type="submit" size="large">
+        + ADD
       </Button>
     </Box>
   );

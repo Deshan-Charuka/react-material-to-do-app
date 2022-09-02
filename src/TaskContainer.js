@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
+import Checkbox from "@mui/material/Checkbox";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -11,15 +12,36 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: "center",
   color: theme.palette.text.secondary,
+  width: "100%",
 }));
 
-const TaskContainer = () => {
+const TaskContainer = (props) => {
+  const handleChange = (event) => {};
+
   return (
     <Box sx={{ width: "25%" }}>
       <Stack spacing={2}>
-        <Item>Item 1</Item>
-        <Item>Item 2</Item>
-        <Item>Item 3</Item>
+        {props.tasks.map((d) => {
+          return (
+            <Item key={d.id}>
+              <Checkbox
+                checked={d.isComplete === 1 ? true : false}
+                onChange={(e) => {
+                  console.log(e.target.checked);
+                  d.isComplete = e.target.checked === true ? 1 : 2;
+                  props.setTasks([...props.tasks]);
+                }}
+              />{" "}
+              <span
+                style={{
+                  textDecoration: d.isComplete === 1 ? "line-through" : null,
+                }}
+              >
+                {d.description}
+              </span>
+            </Item>
+          );
+        })}
       </Stack>
     </Box>
   );
