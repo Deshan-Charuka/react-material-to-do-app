@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2";
 import ComboBox from "./ComboBox";
 import InputForm from "./InputForm";
+import TaskContainer from "./TaskContainer";
 
 const App = () => {
   return (
@@ -13,7 +14,7 @@ const App = () => {
           <ComboBox />
         </Grid>
         <Grid xs={12}>
-          <div>2</div>
+        <TaskContainer />
         </Grid>
         <Grid xs={12}>
           <InputForm />

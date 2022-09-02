@@ -35,7 +35,7 @@ const InputForm = () => {
     >
       <TextField
         id="task-description-input"
-        label="Filled"
+        label="Task"
         variant="filled"
         name="taskDescription"
         type="text"
