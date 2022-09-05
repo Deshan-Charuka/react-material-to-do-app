@@ -16,30 +16,54 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const TaskContainer = (props) => {
-
   return (
     <Box sx={{ width: "25%" }}>
       <Stack spacing={2}>
-        {props.tasks.map((d) => {
-          return (
-            <Item key={d.id}>
-              <Checkbox
-                checked={d.isComplete === 1 ? true : false}
-                onChange={(e) => {
-                  d.isComplete = e.target.checked === true ? 1 : 2;
-                  props.setTasks([...props.tasks]);
-                }}
-              />{" "}
-              <span
-                style={{
-                  textDecoration: d.isComplete === 1 ? "line-through" : null,
-                }}
-              >
-                {d.description}
-              </span>
-            </Item>
-          );
-        })}
+        {!props.selectedComboValue
+          ? props.tasks.map((d) => {
+              return (
+                <Item key={d.id}>
+                  <Checkbox
+                    checked={d.isComplete === 1 ? true : false}
+                    onChange={(e) => {
+                      d.isComplete = e.target.checked === true ? 1 : 0;
+                      props.setTasks([...props.tasks]);
+                    }}
+                  />{" "}
+                  <span
+                    style={{
+                      textDecoration:
+                        d.isComplete === 1 ? "line-through" : null,
+                    }}
+                  >
+                    {d.description}
+                  </span>
+                </Item>
+              );
+            })
+          : props.tasks
+              .filter((d) => d.isComplete === props.selectedComboValue.id)
+              .map((d) => {
+                return (
+                  <Item key={d.id}>
+                    <Checkbox
+                      checked={d.isComplete === 1 ? true : false}
+                      onChange={(e) => {
+                        d.isComplete = e.target.checked === true ? 1 : 0;
+                        props.setTasks([...props.tasks]);
+                      }}
+                    />{" "}
+                    <span
+                      style={{
+                        textDecoration:
+                          d.isComplete === 1 ? "line-through" : null,
+                      }}
+                    >
+                      {d.description}
+                    </span>
+                  </Item>
+                );
+              })}
       </Stack>
     </Box>
   );
