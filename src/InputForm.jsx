@@ -29,7 +29,7 @@ const InputForm = (props) => {
         {
           id: props.tasks.length + 1,
           description: formValues.taskDescription,
-          isComplete: 2,
+          isComplete: 0,
         },
       ]);
     }
